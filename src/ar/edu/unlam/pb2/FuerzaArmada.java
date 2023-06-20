@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import ar.edu.unlam.pb2.enumeradores.TipoDeBatalla;
@@ -57,13 +58,16 @@ public class FuerzaArmada {
 		
 		String informacionDeLaBatalla = ""; 
 		
-
-		for(Map.Entry<String, Batalla> batalla : this.batallas.entrySet()) {
-			String nombreBatallaKey = batalla.getKey();
-			Batalla unaBatalla = batalla.getValue();
-			
-			
-			
+		TreeMap<String, Batalla> batallasOrdenadas = new TreeMap<>(this.batallas);
+		
+		for(Map.Entry<String, Batalla> unaBatalla : batallasOrdenadas.entrySet()) {
+			informacionDeLaBatalla += "Batalla "
+									+ "\n\tNombre: " + unaBatalla.getKey()
+									+ "\n\tTipo: "  + unaBatalla.getValue().getTipo()
+									+ "\n\tUbicacion: "
+									+ "\n\t\tLatitud:" + unaBatalla.getValue().getLatitud()
+									+ "\n\t\tLongitud:" + unaBatalla.getValue().getLongitud()
+									+ "\n\tVehiculos: " + unaBatalla.getValue().presentarVehiculos();
 		}
 		
 		

@@ -1,6 +1,7 @@
 package ar.edu.unlam.pb2;
 
-public abstract class Vehiculo {
+public abstract class Vehiculo implements Comparable<Vehiculo>{
+	
 	protected Integer codigo; //cada uno de mis  hijos puede tener distinto valor en este tipo de atributo
 	protected String modelo;
 	
@@ -49,10 +50,24 @@ public abstract class Vehiculo {
 			return false;
 		return true;
 	}
+
 	
 	/* Me estaba agregando todos los 26 vehiculos porque no habia comentado el get class
 	 * */
 	
+	@Override
+	public int compareTo(Vehiculo o) {
+		
+		String miTipoDeVehiculo = this.getClass().getSimpleName();
+		String tipoDeOtroVehiculo = o.getClass().getSimpleName();
+		
+		if(miTipoDeVehiculo.compareTo(tipoDeOtroVehiculo) == 0) {
+			return Integer.compare(this.getCodigo(),o.getCodigo());
+		}else {
+			return miTipoDeVehiculo.compareTo(tipoDeOtroVehiculo);
+		}
+		
+	}
 	
 	
 	

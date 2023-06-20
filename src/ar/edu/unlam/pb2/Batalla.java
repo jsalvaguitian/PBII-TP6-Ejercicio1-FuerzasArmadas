@@ -1,7 +1,10 @@
 package ar.edu.unlam.pb2;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import ar.edu.unlam.pb2.enumeradores.TipoDeBatalla;
 import ar.edu.unlam.pb2.excepciones.VehiculoIncompatibleException;
@@ -76,6 +79,23 @@ public class Batalla {
 		
 		//return false;
 		
+	}
+
+	public String presentarVehiculos() {
+		String datosVehiculos = "";
+		 
+		ArrayList<Vehiculo> vehiculosOrdenados = new ArrayList<>(this.vehiculosEnBatalla);
+		
+		Collections.sort(vehiculosOrdenados); //ordeno los vehiculos segun su tipo
+		
+		for(Vehiculo unVehiculo : vehiculosOrdenados) {
+			datosVehiculos += "\n\t\tVehiculo: "+ unVehiculo.getClass().getSimpleName()
+							+ "\n\t\tCodigo: " + unVehiculo.getCodigo()
+							+ "\n\t\tModelo: " + unVehiculo.getModelo();
+		}
+		
+				
+		return datosVehiculos;
 	}
 	
 	

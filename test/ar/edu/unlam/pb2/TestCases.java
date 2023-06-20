@@ -79,7 +79,7 @@ public class TestCases {
 		argentina.agregarVehiculo(new Portaviones(1009, "A-10"));
 		argentina.agregarVehiculo(new Destructor(1010, "A-10"));
 		argentina.agregarVehiculo(new Destructor(1011, "A-10"));
-		argentina.agregarVehiculo(new Hidroavion(1012, "A-10"));
+		argentina.agregarVehiculo(new HidroAvion(1012, "A-10"));
 	//	argentina.agregarVehiculo(new Anfibio(0012, "A-10"));
 		argentina.agregarVehiculo(new Avion(1, "A-10"));
 		argentina.agregarVehiculo(new Avion(2, "A-10"));
@@ -115,6 +115,23 @@ public class TestCases {
 	@Test
 	//public void queSePuedaPlanearLaBatallaSobreElOceano() {
 	public void queSePuedaPresentarBatallaTerrestre() throws Exception {
+		String datosDeLasBatallasTest = "Batalla "
+									+ "\n\tNombre: San Lorenzo"
+									+ "\n\tTipo: TERRESTRE"  
+									+ "\n\tUbicacion: "
+									+ "\n\t\tLatitud:100.5" 
+									+ "\n\t\tLongitud:20.3" 
+									+ "\n\tVehiculos: " 
+									+ "\n\t\tVehiculo: Camion"
+									+ "\n\t\tCodigo: 6" 
+									+ "\n\t\tModelo: T-72"
+									+ "\n\t\tVehiculo: Camion"
+									+ "\n\t\tCodigo: 7" 
+									+ "\n\t\tModelo: T-72"
+									+ "\n\t\tVehiculo: Tanque"
+									+ "\n\t\tCodigo: 5" 
+									+ "\n\t\tModelo: Renault FT";
+		
 		FuerzaArmada argentina = new FuerzaArmada();
 
 		argentina.agregarVehiculo(new Avion(1001, "A-10"));
@@ -128,7 +145,7 @@ public class TestCases {
 		argentina.agregarVehiculo(new Portaviones(1009, "A-10"));
 		argentina.agregarVehiculo(new Destructor(1010, "A-10"));
 		argentina.agregarVehiculo(new Destructor(1011, "A-10"));
-		argentina.agregarVehiculo(new Hidroavion(1012, "A-10"));
+		argentina.agregarVehiculo(new HidroAvion(1012, "A-10"));
 		argentina.agregarVehiculo(new Anfibio(1012, "A-10"));
 
 		argentina.agregarVehiculo(new Tanque(5, "Renault FT"));
@@ -141,8 +158,9 @@ public class TestCases {
 		argentina.enviarALaBatalla("San Lorenzo", 6);
 		argentina.enviarALaBatalla("San Lorenzo", 7);
 
-		argentina.presentarBatalla(); //Presentar ordenado los vehiculos por tipo de vehiculo
+		//argentina.presentarBatalla(); //Presentar ordenado los vehiculos por tipo de vehiculo
 		
+		assertEquals(datosDeLasBatallasTest, argentina.presentarBatalla());//Presentar ordenada las batallas por su key y ordenados los vehiculos por tipo de vehiculo
 		
 
 		/*assertTrue(argentina.enviarALaBatalla("San Lorenzo", 5));
@@ -153,6 +171,44 @@ public class TestCases {
 
 	@Test
 	public void queSePuedaPresentarBatallaNaval() throws Exception {
+		String datosInformacionBatallas = "Batalla "
+				+ "\n\tNombre: Pacifico"
+				+ "\n\tTipo: NAVAL"  
+				+ "\n\tUbicacion: "
+				+ "\n\t\tLatitud:200.5" 
+				+ "\n\t\tLongitud:45.8" 
+				+ "\n\tVehiculos: " 
+				+ "\n\t\tVehiculo: Anfibio"
+				+ "\n\t\tCodigo: 13" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: Anfibio"
+				+ "\n\t\tCodigo: 19" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: Destructor"
+				+ "\n\t\tCodigo: 10" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: Destructor"
+				+ "\n\t\tCodigo: 11" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: HidroAvion"
+				+ "\n\t\tCodigo: 12" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: HidroAvion"
+				+ "\n\t\tCodigo: 18" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: Portaviones"
+				+ "\n\t\tCodigo: 9" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: Portaviones"
+				+ "\n\t\tCodigo: 15" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: Submarino"
+				+ "\n\t\tCodigo: 8" 
+				+ "\n\t\tModelo: A-10"
+				+ "\n\t\tVehiculo: Submarino"
+				+ "\n\t\tCodigo: 14" 
+				+ "\n\t\tModelo: A-10";
+		
 		FuerzaArmada argentina = new FuerzaArmada();
 
 		argentina.agregarVehiculo(new Submarino(8, "A-10"));
@@ -184,8 +240,10 @@ public class TestCases {
 		argentina.enviarALaBatalla("Pacifico", 15);
 		argentina.enviarALaBatalla("Pacifico", 18);
 		argentina.enviarALaBatalla("Pacifico", 19);
+		
+		assertEquals(datosInformacionBatallas, argentina.presentarBatalla());
 
-		/*
+		/* Sin Excepciones
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 8));
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 9));
 		assertTrue(argentina.enviarALaBatalla("Pacifico", 10));		
